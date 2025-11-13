@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            width: 320px;
+            padding: 16px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+        }
+        
+        h1 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #202124;
+        }
+        
+        .subtitle {
+            font-size: 12px;
+            color: #5f6368;
+            margin-bottom: 16px;
+        }
+        
+        .status {
+            background: white;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 16px;
+            border: 1px solid #e8eaed;
+        }
+        
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .status-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .status-label {
+            font-size: 13px;
+            color: #5f6368;
+        }
+        
+        .status-value {
+            font-size: 14px;
+            font-weight: 500;
+            color: #202124;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .btn-primary {
+            background: #1a73e8;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #1557b0;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #1a73e8;
+            border: 1px solid #1a73e8;
+        }
+        
+        .btn-secondary:hover {
+            background: #e8f0fe;
+        }
+        
+        .btn-danger {
+            background: white;
+            color: #d93025;
+            border: 1px solid #d93025;
+        }
+        
+        .btn-danger:hover {
+            background: #fce8e6;
+        }
+        
+        .message {
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-top: 12px;
+            display: none;
+        }
+        
+        .message.show {
+            display: block;
+        }
+        
+        .message.success {
+            background: #e6f4ea;
+            color: #137333;
+            border: 1px solid #c6e8d2;
+        }
+        
+        .message.error {
+            background: #fce8e6;
+            color: #c5221f;
+            border: 1px solid #f4c7c3;
+        }
+        
+        input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>⏱️ Gemini Timestamps</h1>
+    <p class="subtitle">Manage your timestamp data</p>
+    
+    <div class="status">
+        <div class="status-item">
+            <span class="status-label">Timestamps stored:</span>
+            <span class="status-value" id="count">0</span>
+        </div>
+        <div class="status-item">
+            <span class="status-label">Storage size:</span>
+            <span class="status-value" id="size">0 KB</span>
+        </div>
+    </div>
+    
+    <div class="button-group">
+        <button class="btn-primary" id="exportBtn">
+            <span>📥</span>
+            <span>Export Timestamps</span>
+        </button>
+        
+        <button class="btn-secondary" id="importBtn">
+            <span>📤</span>
+            <span>Import Timestamps</span>
+        </button>
+        
+        <button class="btn-danger" id="clearBtn">
+            <span>🗑️</span>
+            <span>Clear All Data</span>
+        </button>
+    </div>
+    
+    <div id="message" class="message"></div>
+    
+    <input type="file" id="fileInput" accept="application/json">
+    
+    <script src="popup.js"></script>
+</body>
+</html>

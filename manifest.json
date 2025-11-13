@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Gemini Timestamp Unlocker",
+  "version": "2.1",
+  "description": "Reveals hidden timestamps in Gemini chats via XHR interception.",
+  "permissions": [
+    "scripting",
+    "activeTab"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+    }
+  },
+  "content_scripts": [{
+    "matches": ["https://gemini.google.com/*"],
+    "js": ["content_loader.js"],
+    "run_at": "document_start"
+  }],
+  "web_accessible_resources": [{
+    "resources": ["gemini_interceptor.js"],
+    "matches": ["https://gemini.google.com/*"]
+  }]
+}
